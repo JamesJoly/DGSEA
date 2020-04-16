@@ -3,7 +3,7 @@
 #' @param input.df Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in columns 2:N
 #' @param gmt.list gmt list containing the gene sets the user wishes to use with gene set name as column name and genes in the rows (i.e. from GSA.read.gmt())
 #' @param Gene.Set.A.Name Character string containing the exact name of the first gene set the user wishes to compare
-#' @param Gene.Set.b.Name Character string containing the exact name of the second gene set the user wishes to compare
+#' @param Gene.Set.B.Name Character string containing the exact name of the second gene set the user wishes to compare
 #' @param num.permutations Number of permutations to perform, default = 1000
 #' @param stat.type Character string set to "Weighted" (weight = 1) or "Classic" (score weight = 0), default is "Weighted"
 #'
@@ -16,15 +16,17 @@
 #' data <- as.data.frame(cbind(Gene,expression_data))
 #' gene.set.A <- c("A","B","C","D","E")
 #' gene.set.B <- c("V","W","X","Y","Z")
-#' DGSEA.gene.sets <- as.data.frame(cbind(gene.set.A,gene.set.B))
 #' gene.set.X <- c("J","Q","O","E","F")
 #' gene.set.Y <- c("D","S","K","L","R")
 #' gene.set.Z <- c("G","W","P","B","T")
-#' background.gene.sets <- as.data.frame(cbind(gene.set.X,gene.set.Y,gene.set.Z))
+#' names <- c("gene.set.A","gene.set.B","gene.set.X","gene.set.Y","gene.set.Z")
+#' Letter.Sets <- list(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+#' names(Letter.Sets) <- NULL
+#' Gene.Sets <- list(genesets = Letter.Sets, geneset.names = names)
 #'
 #' dgsea_targeted(input.df = data,
-#' target.DGSEA.gene.sets = DGSEA.gene.sets,
-#' background.gene.sets = background.gene.sets)
+#' gmt.list = Gene.Sets,
+#' Gene.Set.A.Name = names[1], Gene.Set.B.Name = names[2])
 #'
 dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
                            num.permutations = 1000, stat.type = "Weighted"){

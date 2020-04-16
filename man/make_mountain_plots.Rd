@@ -28,9 +28,12 @@ gene.set.B <- c("V","W","X","Y","Z") #negative enrichment
 gene.set.X <- c("J","Q","O","E","F")
 gene.set.Y <- c("D","S","K","L","R")
 gene.set.Z <- c("G","W","P","B","T")
-Letter.Sets <- cbind(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+names <- c("gene.set.A","gene.set.B","gene.set.X","gene.set.Y","gene.set.Z")
+Letter.Sets <- list(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+names(Letter.Sets) <- NULL
+Gene.Sets <- list(genesets = Letter.Sets, geneset.names = names)
 
-dgsea.results <- dgsea_untargeted(input.df = data, Gene.Sets = Letter.Sets)
+dgsea.results <- dgsea_untargeted(input.df = data, gmt.list = Gene.Sets)
 
 make_mountain_plots(DGSEA.list = dgsea.results,
 Gene.Set.A = "gene.set.A", Gene.Set.B = "gene.set.B")

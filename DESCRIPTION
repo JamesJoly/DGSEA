@@ -18,5 +18,7 @@ Imports:
     parallel,
     stats,
     graphics,
-    utils
+    utils,
+    plyr,
+    grDevices
 RoxygenNote: 7.1.0

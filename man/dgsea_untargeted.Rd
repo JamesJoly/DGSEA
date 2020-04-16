@@ -6,7 +6,7 @@
 \usage{
 dgsea_untargeted(
   input.df,
-  Gene.Sets,
+  gmt.list,
   num.permutations = 1000,
   stat.type = "Weighted"
 )
@@ -14,7 +14,7 @@ dgsea_untargeted(
 \arguments{
 \item{input.df}{Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in columns 2:N}
 
-\item{Gene.Sets}{Data frame containing gene sets with gene set name as column name and genes in the rows}
+\item{gmt.list}{gmt list containing the gene sets the user wishes to use with gene set name as column name and genes in the rows (i.e. from GSA.read.gmt())}
 
 \item{num.permutations}{Number of permutations to perform, default = 1000}
 
@@ -35,8 +35,11 @@ gene.set.B <- c("V","W","X","Y","Z")
 gene.set.X <- c("J","Q","O","E","F")
 gene.set.Y <- c("D","S","K","L","R")
 gene.set.Z <- c("G","W","P","B","T")
-Letter.Sets <- cbind(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+names <- c("gene.set.A","gene.set.B","gene.set.X","gene.set.Y","gene.set.Z")
+Letter.Sets <- list(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+names(Letter.Sets) <- NULL
+Gene.Sets <- list(genesets = Letter.Sets, geneset.names = names)
 
-dgsea_untargeted(input.df = data, Gene.Sets = Letter.Sets)
+dgsea_untargeted(input.df = data, gmt.list = Gene.Sets)
 
 }

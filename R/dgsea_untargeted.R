@@ -17,9 +17,12 @@
 #' gene.set.X <- c("J","Q","O","E","F")
 #' gene.set.Y <- c("D","S","K","L","R")
 #' gene.set.Z <- c("G","W","P","B","T")
-#' Letter.Sets <- cbind(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+#' names <- c("gene.set.A","gene.set.B","gene.set.X","gene.set.Y","gene.set.Z")
+#' Letter.Sets <- list(gene.set.A,gene.set.B,gene.set.X,gene.set.Y,gene.set.Z)
+#' names(Letter.Sets) <- NULL
+#' Gene.Sets <- list(genesets = Letter.Sets, geneset.names = names)
 #'
-#' dgsea_untargeted(input.df = data, Gene.Sets = Letter.Sets)
+#' dgsea_untargeted(input.df = data, gmt.list = Gene.Sets)
 #'
 
 dgsea_untargeted <- function(input.df, gmt.list,

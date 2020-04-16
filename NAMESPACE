@@ -5,6 +5,8 @@ export(dgsea_untargeted)
 export(make_mountain_plots)
 #' @importsFrom testthat expect_is
 #' @importsFrom dplyr select
+#' @importsFrom plyr ldply
+#' @importsFrom grDevices recordPlot
 #' @importsFrom snow makeCluster
 #' @importsFrom parallel detectCores
 #' @importsFrom doSNOW registerDoSNOW
