@@ -1,0 +1,22 @@
+Package: DGSEA
+Type: Package
+Title: Differential Gene Set Enrichment Analysis
+Version: 0.1.0
+Author: James H Joly
+Maintainer: James H Joly <joly@usc.edu>
+Description: Performs Differential Gene Set Enrichment Analysis, a statistical method for quantifying two gene sets relative to one another.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    testthat,
+    dplyr,
+    foreach,
+    doParallel,
+    doSNOW,
+    snow,
+    parallel,
+    stats,
+    graphics,
+    utils
+RoxygenNote: 7.1.0
