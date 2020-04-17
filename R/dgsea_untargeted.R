@@ -149,6 +149,9 @@ dgsea_untargeted <- function(input.df, gmt.list,
   annotations <- cbind(data_in$Gene,annotations)
   colnames(annotations) <- c("Gene", Gene.Sets.All)
   annotations <- as.matrix(annotations)
+
+  num.hits.pathways <- list()
+
   ### Annotate gene sets
   for (j in 1:length(Gene.Sets.All)){
     temp.pathway <- Gene.Sets[,Gene.Sets.All[j]]
@@ -157,6 +160,16 @@ dgsea_untargeted <- function(input.df, gmt.list,
         annotations[i,j+1] = "X";
       }
     }
+    num.hits.pathways[[Gene.Sets.All[j]]] <- sum(annotations[,Gene.Sets.All[j]] == "X")
+  }
+
+  num.hits.pathways.df <- matrix(unlist(num.hits.pathways))
+  row.names(num.hits.pathways.df) = Gene.Sets.All
+  num.gene.sets.under.5 <- which(num.hits.pathways.df < 5)
+  if (length(num.gene.sets.under.5) > 1){
+    print("Warning: Removing gene sets with less than 5 genes observed in data set.")
+    gene.sets.to.remove <- Gene.Sets.All[num.gene.sets.under.5]
+    annotations[,which(colnames(annotations) %in% gene.sets.to.remove)] <- NULL
   }
   annotations <- as.data.frame(annotations)
   data_in <- merge(data_in, annotations, by = "Gene")

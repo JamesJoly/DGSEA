@@ -188,6 +188,7 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   annotations <- cbind(data_in$Gene,annotations)
   colnames(annotations) <- c("Gene", background.Gene.Sets.A.and.B_unique)
   annotations <- as.matrix(annotations)
+  num.hits.pathways <- list()
   ### Annotate gene sets
   for (j in 1:length(background.Gene.Sets.A.and.B_unique)){
     temp.pathway <- background.Gene.Sets.A.and.B[,background.Gene.Sets.A.and.B_unique[j]]
@@ -196,8 +197,20 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
         annotations[i,j+1] = "X";
       }
     }
+    num.hits.pathways[[background.Gene.Sets.A.and.B_unique[j]]] <- sum(annotations[,background.Gene.Sets.A.and.B_unique[j]] == "X")
   }
+  num.hits.pathways.df <- matrix(unlist(num.hits.pathways))
+  row.names(num.hits.pathways.df) = background.Gene.Sets.A.and.B_unique
+  num.gene.sets.under.5 <- which(num.hits.pathways.df < 5)
+  if (length(num.gene.sets.under.5) > 1){
+    print("Warning: Removing gene sets with less than 5 genes observed in data set.")
+    gene.sets.to.remove <- background.Gene.Sets.A.and.B_unique[num.gene.sets.under.5]
+    annotations[,which(colnames(annotations) %in% gene.sets.to.remove)] <- NULL
+  }
+
+  gene.sets.updated <- colnames(annotations)[-1]
   annotations <- as.data.frame(annotations)
+
   data_in <- merge(data_in, annotations, by = "Gene")
 
   data_in <- stats::na.omit(data_in)
@@ -216,7 +229,7 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   Mountain.Plot.Info.All.Samples <- list()
   rank_metric.All.Samples <- list()
 
-  Gene.Sets.All <- c(Gene.Sets.A.and.B,background.Gene.Sets.A.and.B_unique)
+  Gene.Sets.All <- c(Gene.Sets.A.and.B,gene.sets.updated)
 
   rm(annotations)
   data_in2 <- array(data = NA)
