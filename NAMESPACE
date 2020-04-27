@@ -13,4 +13,5 @@ export(make_mountain_plots)
 #' @importsFrom foreach foreach %dopar%
 #' @importsFrom graphics abline barplot box layout layout.show lines par plot text
 #' @importsFrom stats na.omit
+importFrom("stats", "na.omit")
 #' @importsFrom utils combn setTxtProgressBar txtProgressBar globalVariables
