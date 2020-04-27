@@ -454,6 +454,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
 
     print("Calculating DGSEA FDR...")
     filtered.combinations <- DGSEA.Results[DGSEA.Results$p_value_AB < 0.25,]$Gene.Sets.Compared
+    filtered.combinations <- na.omit(filtered.combinations)
     opts <- list(progress = progress)
     pb <- utils::txtProgressBar(min = 0, max = length(filtered.combinations), style = 3)
 
