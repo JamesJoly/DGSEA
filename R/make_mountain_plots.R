@@ -60,7 +60,7 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
   gsea.q.val <- signif(DGSEA.results[DGSEA.results$Gene.Sets.Compared == myName,]$FDR, digits = 3)
 
   gsea.layout <- graphics::layout(matrix(c(1, 2, 3)), heights = c(2, 0.5, 2))
-  p1 <- graphics::layout.show(gsea.layout)
+  #p1 <- graphics::layout.show(gsea.layout)
 
   # Create plots
   p1 <- graphics::par(mar = c(0, 5, 2, 2))
