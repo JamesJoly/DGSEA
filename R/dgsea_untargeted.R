@@ -353,7 +353,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
       tempY <- combinations[2,x]
       KSRandomArray[,tempX] - KSRandomArray[,tempY]
     })
-    myNames <- c(paste(combinations[1,]," - ",combinations[2,]))
+    myNames <- c(paste(combinations[1,]," - ",combinations[2,], sep = ""))
     names(Permutations.Results) <- myNames
     rm(KSRandomArray)
 
