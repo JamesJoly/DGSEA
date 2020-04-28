@@ -362,7 +362,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
     list.DGSEA.Results <- lapply(1:ncol(combinations), function(x){
       tempX <- combinations[1,x]
       tempY <- combinations[2,x]
-      temp.Name <- paste(combinations[1,x]," - ",combinations[2,x])
+      temp.Name <- paste(combinations[1,x]," - ",combinations[2,x], sep = "")
 
       temp.KS.A <- GSEA.Results[GSEA.Results$Gene.Set == tempX,]$KS
       temp.KS.B <- GSEA.Results[GSEA.Results$Gene.Set == tempY,]$KS
@@ -415,7 +415,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
     list.Permutations.Normazlized <- list()
 
     list.Permutations.Normazlized <- lapply(1:ncol(combinations), function(x){
-      temp.Name <- paste(combinations[1,x]," - ",combinations[2,x])
+      temp.Name <- paste(combinations[1,x]," - ",combinations[2,x], sep = "")
       temp.permutations <- Permutations.Results[[temp.Name]]
       #Permutations.Results[[temp.Name]] <- NULL
       temp.permutations.pos <- temp.permutations[which(temp.permutations >= 0)]
