@@ -26,8 +26,14 @@
 #' make_mountain_plots(DGSEA.list = dgsea.results,
 #' Gene.Set.A = "gene.set.A", Gene.Set.B = "gene.set.B")
 #'
-make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B){
+make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE){
   requireNamespace("DGSEA")
+
+  if (color = TRUE){
+    color.palette <- c("red","blue")
+  } else if (color = FALSE){
+    color.palette <- c("grey90","grey30")
+  }
 
   DGSEA.list <- DGSEA.list
   plotting.info <- DGSEA.list$Mountain.Plot.Info
