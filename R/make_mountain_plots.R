@@ -3,6 +3,7 @@
 #' @param DGSEA.list A list resulting from either dgsea_targeted() or dgsea_untargeted()
 #' @param Gene.Set.A A character string containing the first gene set you wish to plot
 #' @param Gene.Set.B A character string containing the second gene set you wish to plot
+#' @param color Set to TRUE or FALSE to generate enrichment plot with color or black and white.
 #'
 #' @return A plot demonstrating the enrichment of two gene sets
 #' @export
@@ -29,10 +30,10 @@
 make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE){
   requireNamespace("DGSEA")
 
-  if (color = TRUE){
+  if (color == TRUE){
     color.palette <- c("red","blue")
-  } else if (color = FALSE){
-    color.palette <- c("grey90","grey30")
+  } else if (color == FALSE){
+    color.palette <- c("black","grey70")
   }
 
   DGSEA.list <- DGSEA.list
@@ -48,7 +49,7 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
   pos.GeneSetA <- position.of.hits[[Gene.Set.A]]
   pos.GeneSetB <- position.of.hits[[Gene.Set.B]]
 
-  myName <- paste(Gene.Set.A, " - ", Gene.Set.B, sep = " ")
+  myName <- paste(Gene.Set.A, " - ", Gene.Set.B, sep = "")
 
   DGSEA.results <- DGSEA.list$DGSEA.Results
   DGSEA.results$p_value_AB <- as.numeric(as.character(DGSEA.results$p_value_AB))
@@ -74,7 +75,7 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
   gsea.es.profile.B <- ES_GeneSetB[gsea.hit.indices.B]
 
   p1 <- graphics::plot(c(1, gsea.hit.indices.A, length(ES_GeneSetA)),
-                       c(0, gsea.es.profile.A, 0), type = "l", col = "red", lwd = 1.5, xaxt = "n",
+                       c(0, gsea.es.profile.A, 0), type = "l", col = color.palette[1], lwd = 1.5, xaxt = "n",
                        xaxs = "i", xlab = "", ylab = "Enrichment score (ES)", main = myName,
                        ylim = enrichment.score.range,
                        #main = list(gsea.gene.set, font = 1, cex = 1),
@@ -86,7 +87,7 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
                        }
   )
   p1 <- p1 + graphics::lines(c(1, gsea.hit.indices.B, length(ES_GeneSetB)),
-                             c(0, gsea.es.profile.B, 0), type = "l", col = "blue", lwd = 1.5, xaxt = "n",
+                             c(0, gsea.es.profile.B, 0), type = "l", col = color.palette[2], lwd = 1.5, xaxt = "n",
                              xaxs = "i", xlab = "", ylab = "Enrichment score (ES)",
                              ylim = enrichment.score.range,
                              #main = list(gsea.gene.set, font = 1, cex = 1),
@@ -107,9 +108,9 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
                            gsea.q.val, "\nNES:",
                            gsea.normalized.enrichment.score), adj = c(0, 0))
       graphics::text(length(ES_GeneSetA) * 0.95, plot.coordinates[4] - ((plot.coordinates[4] - plot.coordinates[3]) * 0.02),
-                     paste(Gene.Set.A), col = "red", adj = c(1,1))
+                     paste(Gene.Set.A), col = color.palette[1], adj = c(1,1))
       graphics::text(length(ES_GeneSetA) * 0.95, plot.coordinates[4] - ((plot.coordinates[4] - plot.coordinates[3]) * 0.10),
-                     paste(Gene.Set.B), col = "blue", adj = c(1,1))
+                     paste(Gene.Set.B), col = color.palette[2], adj = c(1,1))
 
     } else {
       graphics::text(length(ES_GeneSetA) * 0.95, plot.coordinates[4] - ((plot.coordinates[4] - plot.coordinates[3]) * 0.03),
@@ -117,9 +118,9 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
                            gsea.q.val, "\n NES:",
                            gsea.normalized.enrichment.score, "\n"), adj = c(1, 1))
       graphics::text(length(ES_GeneSetA) * 0.05, plot.coordinates[3] * 0.90,
-                     paste(Gene.Set.A), col = "red", adj = c(0,0))
+                     paste(Gene.Set.A), col =  color.palette[1], adj = c(0,0))
       graphics::text(length(ES_GeneSetA) * 0.05, plot.coordinates[3] * 0.6,
-                     paste(Gene.Set.B), col = "blue", adj = c(0,0))
+                     paste(Gene.Set.B), col = color.palette[2], adj = c(0,0))
     }
   }
 
@@ -127,8 +128,8 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
     graphics::par(mar = c(0, 5, 0, 2))
     graphics::plot(0, type = "n", xaxt = "n", xaxs = "i", xlab = "", yaxt = "n",
                    ylab = "", xlim = c(1, length(ES_GeneSetA)))
-    graphics::abline(v = gsea.hit.indices.A, lwd = 0.75, col = "red")
-    graphics::abline(v = gsea.hit.indices.B, lwd = 0.75, col = "blue")
+    graphics::abline(v = gsea.hit.indices.A, lwd = 0.75, col = color.palette[1])
+    graphics::abline(v = gsea.hit.indices.B, lwd = 0.75, col = color.palette[2])
   }
   ## Need to figure out how to save Rank metric from DGSEA for the rest of this.
 
