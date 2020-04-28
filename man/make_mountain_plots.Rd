@@ -4,7 +4,7 @@
 \alias{make_mountain_plots}
 \title{Make mountain plots from a DGSEA list}
 \usage{
-make_mountain_plots(DGSEA.list, Gene.Set.A, Gene.Set.B)
+make_mountain_plots(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE)
 }
 \arguments{
 \item{DGSEA.list}{A list resulting from either dgsea_targeted() or dgsea_untargeted()}
@@ -12,6 +12,8 @@ make_mountain_plots(DGSEA.list, Gene.Set.A, Gene.Set.B)
 \item{Gene.Set.A}{A character string containing the first gene set you wish to plot}
 
 \item{Gene.Set.B}{A character string containing the second gene set you wish to plot}
+
+\item{color}{Set to TRUE or FALSE to generate enrichment plot with color or black and white.}
 }
 \value{
 A plot demonstrating the enrichment of two gene sets
