@@ -4,10 +4,18 @@
 \alias{make_mountain_plots}
 \title{Make mountain plots from a DGSEA list}
 \usage{
-make_mountain_plots(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE)
+make_mountain_plots(
+  DGSEA.list,
+  Sample.Name,
+  Gene.Set.A,
+  Gene.Set.B,
+  color = TRUE
+)
 }
 \arguments{
 \item{DGSEA.list}{A list resulting from either dgsea_targeted() or dgsea_untargeted()}
+
+\item{Sample.Name}{A character indicating the name of the sample column exported from DGSEA.Results}
 
 \item{Gene.Set.A}{A character string containing the first gene set you wish to plot}
 
@@ -37,7 +45,7 @@ Gene.Sets <- list(genesets = Letter.Sets, geneset.names = names)
 
 dgsea.results <- dgsea_untargeted(input.df = data, gmt.list = Gene.Sets)
 
-make_mountain_plots(DGSEA.list = dgsea.results,
+make_mountain_plots(DGSEA.list = dgsea.results, Sample.Name = "expression_data",
 Gene.Set.A = "gene.set.A", Gene.Set.B = "gene.set.B")
 
 }
