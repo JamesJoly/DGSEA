@@ -16,7 +16,7 @@ make_mountain_plots(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE)
 \item{color}{Set to TRUE or FALSE to generate enrichment plot with color or black and white.}
 }
 \value{
-A plot demonstrating the enrichment of two gene sets
+A ggplot object demonstrating the enrichment of two gene sets
 }
 \description{
 Make mountain plots from a DGSEA list

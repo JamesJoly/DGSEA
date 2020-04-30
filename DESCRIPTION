@@ -17,8 +17,11 @@ Imports:
     snow,
     parallel,
     stats,
-    graphics,
     utils,
     plyr,
-    grDevices
+    grDevices,
+    ggplot2,
+    aplot,
+    patchwork,
+    cowplot
 RoxygenNote: 7.1.0

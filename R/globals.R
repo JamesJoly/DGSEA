@@ -1,3 +1,4 @@
 
 NULL
-utils::globalVariables(c("x"), add = F)
+utils::globalVariables(c("x","results.as.text"), add = F)
+
