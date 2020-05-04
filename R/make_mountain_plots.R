@@ -51,7 +51,6 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
   myName <- paste(Gene.Set.A, " - ", Gene.Set.B, sep = "")
 
   DGSEA.results <- DGSEA.list$DGSEA.Results
-  DGSEA.results <- DGSEA.results[DGSEA.results$Sample == Sample.Name,]
   DGSEA.results$p_value_AB <- as.numeric(as.character(DGSEA.results$p_value_AB))
   DGSEA.results$FDR <- as.numeric(as.character(DGSEA.results$FDR))
 
