@@ -40,12 +40,6 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   }
 
   requireNamespace("DGSEA")
-  #
-  # library(dplyr)
-  # library(foreach)
-  # library(doParallel)
-  # library(doSNOW)
-  # library(testthat); library(usethis)
 
   #Genes should be first column, named "Gene"
   #Samples should be columns 2:N
@@ -189,7 +183,10 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   colnames(annotations) <- c("Gene", background.Gene.Sets.A.and.B_unique)
   annotations <- as.matrix(annotations)
   num.hits.pathways <- list()
+
   ### Annotate gene sets
+  print("Annotating gene sets...")
+
   for (j in 1:length(background.Gene.Sets.A.and.B_unique)){
     temp.pathway <- background.Gene.Sets.A.and.B[,background.Gene.Sets.A.and.B_unique[j]]
     for (i in 1:nrow(annotations)){
@@ -242,8 +239,9 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   #Register cluster
   doSNOW::registerDoSNOW(cl)
 
+  Samples <- Samples[1]
   for (u in 1:length(Samples)){
-    loop.time <- Sys.time()
+    #loop.time <- Sys.time()
 
     data_in2 <- cbind(subset(data_in, select = Gene.Sets.All),
                       dplyr::select(data_in, Samples[u]))  #select one Sample type and the genes and Gene.Sets.A.and.B
@@ -517,13 +515,6 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
     Mountain.Plot.Info.All.Samples <- c(Mountain.Plot.Info.All.Samples,Mountain.Plot.Info)
     rank_metric.All.Samples <- c(rank_metric.All.Samples, rank_metric)
 
-
-
-    print(paste("Sample #: ", u))
-
-    end.loop.time <- Sys.time()
-    total.loop.time <- signif(end.loop.time - loop.time, digits = 3)
-    print(paste("Time per Sample:" , total.loop.time))
   }
 
   snow::stopCluster(cl)

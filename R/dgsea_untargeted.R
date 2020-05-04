@@ -37,12 +37,6 @@ dgsea_untargeted <- function(input.df, gmt.list,
     score.weight = 1
   }
 
-  # library(dplyr)
-  # library(foreach)
-  # library(doParallel)
-  # library(doSNOW)
-  # library(testthat); library(usethis)
-
   #Read in gene expression data
   #Genes should be first column, named "Gene"
   #Samples should be columns 2:N
@@ -157,6 +151,8 @@ dgsea_untargeted <- function(input.df, gmt.list,
   num.hits.pathways <- list()
 
   ### Annotate gene sets
+  print("Annotating gene sets...")
+
   for (j in 1:length(Gene.Sets.All)){
     temp.pathway <- Gene.Sets[,Gene.Sets.All[j]]
     for (i in 1:nrow(annotations)){
@@ -200,6 +196,8 @@ dgsea_untargeted <- function(input.df, gmt.list,
   cl <- snow::makeCluster(cores[1]-1)
   #Register cluster
   doSNOW::registerDoSNOW(cl)
+
+  Samples <- Samples[1]
 
   rm(annotations)
   data_in2 <- array(data = NA)
@@ -497,11 +495,6 @@ dgsea_untargeted <- function(input.df, gmt.list,
     Mountain.Plot.Info.All.Samples <- c(Mountain.Plot.Info.All.Samples,Mountain.Plot.Info)
     rank_metric.All.Samples <- c(rank_metric.All.Samples,rank_metric)
 
-    print(paste("Sample #: ", u))
-
-    end.loop.time <- Sys.time()
-    total.loop.time <- signif(end.loop.time - loop.time, digits = 3)
-    print(paste("Time per Sample:" , total.loop.time))
   }
 
   snow::stopCluster(cl)
