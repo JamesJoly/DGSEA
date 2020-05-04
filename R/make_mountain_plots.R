@@ -1,7 +1,6 @@
 #' Make mountain plots from a DGSEA list
 #'
 #' @param DGSEA.list A list resulting from either dgsea_targeted() or dgsea_untargeted()
-#' @param Sample.Name A character indicating the name of the sample column exported from DGSEA.Results
 #' @param Gene.Set.A A character string containing the first gene set you wish to plot
 #' @param Gene.Set.B A character string containing the second gene set you wish to plot
 #' @param color Set to TRUE or FALSE to generate enrichment plot with color or black and white.
@@ -25,10 +24,10 @@
 #'
 #' dgsea.results <- dgsea_untargeted(input.df = data, gmt.list = Gene.Sets)
 #'
-#' make_mountain_plots(DGSEA.list = dgsea.results, Sample.Name = "expression_data",
+#' make_mountain_plots(DGSEA.list = dgsea.results,
 #' Gene.Set.A = "gene.set.A", Gene.Set.B = "gene.set.B")
 #'
-make_mountain_plots <- function(DGSEA.list, Sample.Name, Gene.Set.A, Gene.Set.B, color = TRUE){
+make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE){
 
   if (color == TRUE){
     color.palette <- c("red","blue")
