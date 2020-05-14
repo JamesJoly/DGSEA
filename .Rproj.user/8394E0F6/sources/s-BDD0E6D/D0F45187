@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587075813386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "115357149",
+    "id" : "D0F45187",
+    "lastKnownWriteTime" : 1588621023,
+    "last_content_update" : 1588621023892,
+    "path" : "~/DGSEA/R/make_mountain_plots.R",
+    "project_path" : "R/make_mountain_plots.R",
+    "properties" : {
+        "cursorPosition" : "53,0",
+        "scrollLine" : "32",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

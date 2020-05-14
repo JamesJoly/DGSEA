@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588261406846.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "92832C8C",
+    "lastKnownWriteTime" : 1588262016,
+    "last_content_update" : 1588262016337,
+    "path" : "~/DGSEA/R/globals.R",
+    "project_path" : "R/globals.R",
+    "properties" : {
+        "cursorPosition" : "2,57",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
