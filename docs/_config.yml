@@ -29,7 +29,7 @@ twitter_username: jameshjoly
 github_username:  JamesJoly
 
 # Build settings
-theme: minima
+theme: jekyll-theme-slate
 plugins:
   - jekyll-feed
 
