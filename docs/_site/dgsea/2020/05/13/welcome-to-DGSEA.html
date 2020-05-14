@@ -47,10 +47,10 @@
   <div class="post-content e-content" itemprop="articleBody">
     <p>DGSEA can be found on GitHub at https://github.com/JamesJoly/DGSEA. We are in the process of putting DGSEA on Bioconductor, but for now it can be directly installed using devtools in R:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">require</span><span class="p">(</span><span class="n">devtools</span><span class="p">))</span> <span class="p">{</span>
-  <span class="n">install</span><span class="p">.</span><span class="nf">packages</span><span class="p">(</span><span class="s1">'devtools'</span><span class="p">)</span>
-<span class="p">}</span>    
-<span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s1">'JamesJoly/DGSEA'</span><span class="p">)</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">require</span><span class="p">(</span><span class="n">devtools</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">install.packages</span><span class="p">(</span><span class="s1">'devtools'</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">    
+</span><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s1">'JamesJoly/DGSEA'</span><span class="p">)</span></code></pre></figure>
 
 <p>Check out the Running DGSEA page to run your first analysis. File all bugs/feature requests at <a href="https://github.com/JamesJoly/DGSEA">DGSEA’s GitHub repo</a>.</p>
 

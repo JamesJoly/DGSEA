@@ -72,7 +72,7 @@ DGSEA.results.untargeted <- untargeted$DGSEA.Results
 {% endhighlight %}
 
 {% highlight R %}
-# To run dgsea targeted
+# Run targeted dgsea
 
 library(DGSEA)
 
