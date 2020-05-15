@@ -5,11 +5,10 @@ date:   2020-05-13 14:48:58 -0700
 categories: DGSEA
 ---
 
-Once you've installed DGSEA into your R library, you can run either a targeted analysis or untargeted analysis. Targeted analyses are generally used when a hypothesis is known a priori, whereas untargeted analyses are for hypothesis generation.
+Once you've installed DGSEA into your R library, you can run either a targeted analysis or untargeted analysis. Targeted analyses are generally used when a hypothesis is known *a priori*, whereas untargeted analyses are for hypothesis generation.
 
 Regardless, the inputs to the DGSEA functions are similar to that of the GSEA PreRanked function in the Broad Institute's GSEA Java applet. An example for how to format the data is shown below. Similar code was used to generate Figure 2 in our paper (Joly et al. 2020). 
 
-First, generate your expression data set. This could be any suitable metric, such as log2 fold-change (Knockout / Control).
 {% highlight R %}
 # Generate 16,0000 random gene names
 gene.names <- as.character(c(1:16000))
