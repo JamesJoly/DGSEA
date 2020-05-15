@@ -1,6 +1,6 @@
 #' This function performs untargeted DGSEA comparing all gene sets to each other
 #'
-#' @param input.df Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in columns 2:N
+#' @param input.df Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in column 2
 #' @param gmt.list gmt list containing the gene sets the user wishes to use with gene set name as column name and genes in the rows (i.e. from GSA.read.gmt())
 #' @param num.permutations Number of permutations to perform, default = 1000
 #' @param stat.type Character string set to "Weighted" (weight = 1) or "Classic" (score weight = 0), default is "Weighted"

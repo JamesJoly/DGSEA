@@ -1,6 +1,6 @@
 #' This function performs targeted DGSEA comparing Gene Set A to Gene Set B while using background gene sets to control for false discovery rate
 #'
-#' @param input.df Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in columns 2:N
+#' @param input.df Data frame containing Genes in column 1 and ranking metrics for samples (e.g signal-to-noise ratio) in column 2
 #' @param gmt.list gmt list containing the gene sets the user wishes to use with gene set name as column name and genes in the rows (i.e. from GSA.read.gmt())
 #' @param Gene.Set.A.Name Character string containing the exact name of the first gene set the user wishes to compare
 #' @param Gene.Set.B.Name Character string containing the exact name of the second gene set the user wishes to compare
