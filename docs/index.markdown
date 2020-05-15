@@ -10,6 +10,6 @@ layout: home
 
 <img style = "float: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/Animated_mtn_plot.gif" width = "350" height = "215">
 
-<img align = "right" style="clear: right;" src="/assets/images/animated_pos_hits.gif" width = "312" height = "50">
+<img align = "right" style="clear: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/animated_pos_hits.gif" width = "312" height = "50">
 
-<img align = "right" style="clear: right;" src="/assets/images/gene expression.png" width = "362" height = "150">
+<img align = "right" style="clear: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/gene%20expression.png" width = "362" height = "150">

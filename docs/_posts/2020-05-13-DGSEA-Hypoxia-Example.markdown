@@ -51,7 +51,9 @@ MCF10A.mtn.plot <- make_mountain_plots(targeted.MCF10A, set.names[1], set.names[
 MCF10A.mtn.plot
 {% endhighlight %}
 
-![MCF10A_mtn_plot](/assets/images/MCF10A_hypoxia_png.png)
+{:refdef: style="text-align: center;"}
+![MCF10A_mtn_plot](https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/MCF10A_hypoxia_png.png){:height="70%" width="70%"}
+{: refdef}
 
 
 {% highlight R %}
@@ -60,7 +62,9 @@ MCF12A.mtn.plot <- make_mountain_plots(targeted.MCF12A, set.names[1], set.names[
 MCF12A.mtn.plot
 {% endhighlight %}
 
-![MCF12A_mtn_plot](/assets/images/MCF12A_hypoxia_png.png)
+{:refdef: style="text-align: center;"}
+![MCF12A_mtn_plot](https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/MCF12A_hypoxia_png.png){:height="70%" width="70%"}
+{: refdef}
 
 If you find DGSEA helpful, please cite us at: 
 
