@@ -4,15 +4,13 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Differential Gene Set Enrihcment Analysis (DGSEA) is an adaptation of the original [Gene Set Enrichment Analysis](https://www.gsea-msigdb.org/gsea/index.jsp) algorithm from the 
+Broad Institute / MIT. It is a computational method that determines whether two <i>a priori</i> sets of genes show statistically significant differences between two biological states.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+{:refdef: style="text-align: center;"}
+![MountainPlot](https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/DGSEA_mtn_plot_only.png){:height="225px" width="350px"}
+{: refdef}
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Detailed methodology can be found in our manuscript, which is currently at [bioRxiv](https://www.biorxiv.org/content/10.1101/860460v1). 
 
-
-[jekyll-organization]: https://github.com/jekyll
+DGSEA was a collaboration between the labs of [Nicholas Graham (USC)](https://grahamlab.usc.edu/) and [William Lowry (UCLA)](http://lowrylab.com/) and was executed by James Joly. This work was supported by the Viterbi School of Engineering (USC), the Mork Family Department of Chemical Engineering and Materials Science (USC), and the National Institute of Health (NIAMS). 
