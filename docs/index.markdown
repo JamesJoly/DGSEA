@@ -8,7 +8,7 @@ layout: home
 
 
 
-<img style = "float: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/Animated_mtn_plot.gif" width = "350" height = "215">
+<img style = "float: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/Animated_mtn_plot.gif" width = "355" height = "215">
 
 <img align = "right" style="clear: right;" src="https://raw.githubusercontent.com/JamesJoly/DGSEA/master/docs/assets/images/animated_pos_hits.gif" width = "312" height = "50">
 
