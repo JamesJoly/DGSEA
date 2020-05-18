@@ -14,7 +14,7 @@ if (!require(devtools)) {
 devtools::install_github('JamesJoly/DGSEA')
 {% endhighlight %}
 
-Check out the Running DGSEA page to see how to format your data to run your first analysis. Please file all bugs/feature requests at [DGSEA’s GitHub repo][DGSEA-gh].
+Check out the [Running DGSEA][https://jamesjoly.github.io/DGSEA/dgsea/2020/05/13/Running-DGSEA.html] page to see how to format your data to run your first analysis. Please file all bugs/feature requests at [DGSEA’s GitHub repo][DGSEA-gh].
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [DGSEA-gh]:   https://github.com/JamesJoly/DGSEA

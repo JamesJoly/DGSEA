@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Differential Gene Set Enrihcment Analysis (DGSEA) is an adaptation of the original [Gene Set Enrichment Analysis](https://www.gsea-msigdb.org/gsea/index.jsp) algorithm from the 
+Differential Gene Set Enrichment Analysis (DGSEA) is an adaptation of the original [Gene Set Enrichment Analysis](https://www.gsea-msigdb.org/gsea/index.jsp) algorithm from the 
 Broad Institute / MIT. It is a computational method that determines whether two <i>a priori</i> sets of genes show statistically significant differences between two biological states.
 
 {:refdef: style="text-align: center;"}
