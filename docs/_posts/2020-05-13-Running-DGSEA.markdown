@@ -81,9 +81,6 @@ targeted <- dgsea_targeted(Pre.ranked.form, gmt.list = Gene.Sets.gmt.list,
 DGSEA.results.targeted <- targeted$DGSEA.Results
 {% endhighlight %}
 
-
-Check out the Running DGSEA page to run your first analysis. File all bugs/feature requests at [DGSEA’s GitHub repo][DGSEA-gh].
-
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [DGSEA-gh]:   https://github.com/JamesJoly/DGSEA
 
