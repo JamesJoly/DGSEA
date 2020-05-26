@@ -135,7 +135,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
 
   Gene.Sets.All <- colnames(Gene.Sets)
 
-  if (length(Gene.Sets.All > 150)){
+  if (length(Gene.Sets.All) > 150){
     print("Warning: Performing untargeted DGSEA with a large number of gene sets (>150) greatly increases computation time.")
   }
 
