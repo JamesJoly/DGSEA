@@ -41,6 +41,14 @@ dgsea_untargeted <- function(input.df, gmt.list,
   #Genes should be first column, named "Gene"
   #Samples should be columns 2:N
   data_in <- input.df
+  colnames(data_in)[1] <- "Gene"
+  expected.number.of.genes <- length(data_in)
+  actual.number.of.genes <- unique(data_in[,1])
+
+  if (actual.number.of.genes < expected.number.of.genes){
+    stop("Your gene list has duplicates, please collapse your data or process in a different way to use DGSEA.")
+  }
+
 
   gmt.for.reformat <- gmt.list
   Gene.Sets <- t(plyr::ldply(gmt.for.reformat$genesets, rbind)) #reformat gmt list to desired format
@@ -128,9 +136,6 @@ dgsea_untargeted <- function(input.df, gmt.list,
   } #for permutation ES
 
   Samples <- colnames(data_in)
-  if (Samples[1] != "Gene"){
-    stop("Please ensure that your data frame is organized with the first column to be named 'Gene'")
-  }
   Samples <- Samples[-1]
 
   Gene.Sets.All <- colnames(Gene.Sets)

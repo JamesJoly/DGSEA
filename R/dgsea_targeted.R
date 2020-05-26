@@ -45,9 +45,23 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   #Samples should be columns 2:N
 
   data_in <- input.df
+
+
   gmt.for.reformat <- gmt.list
   Gene.Sets <- t(plyr::ldply(gmt.for.reformat$genesets, rbind)) #reformat gmt list to desired format
   colnames(Gene.Sets) <- gmt.for.reformat$geneset.names
+
+  testthat::expect_is(data_in, "data.frame")
+  testthat::expect_is(DGSEA.Gene.Sets, "data.frame")
+  testthat::expect_is(background.Gene.Sets.A.and.B, "data.frame")
+
+  colnames(data_in)[1] <- "Gene"
+  expected.number.of.genes <- length(data_in$Gene)
+  actual.number.of.genes <- unique(data_in$Gene)
+  if (actual.number.of.genes < expected.number.of.genes){
+    stop("Your gene list has duplicates, please collapse your data or process in a different way to use DGSEA.")
+  }
+
 
   Gene.Sets.All <- as.data.frame(Gene.Sets)
 
@@ -63,9 +77,7 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   background.Gene.Sets.A.and.B[,Gene.Set.B.Name] <- NULL
 
 
-  testthat::expect_is(data_in, "data.frame")
-  testthat::expect_is(DGSEA.Gene.Sets, "data.frame")
-  testthat::expect_is(background.Gene.Sets.A.and.B, "data.frame")
+
 
   GSEA.EnrichmentScore <- function(gene.list, gene.set, weighted.score.type = score.weight, correl.vector = NULL){
     tag.indicators <- sign(match(gene.list, gene.set, nomatch = 0))
