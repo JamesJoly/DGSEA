@@ -68,7 +68,8 @@ MCF12A.mtn.plot
 
 If you find DGSEA helpful, please cite us at: 
 
-INSERT CITATION HERE
+Joly, J. H., Lowry, W. E., and Graham, N. A. (2019) Differential Gene Set Enrichment Analysis: A statistical approach to quantify the relative enrichment of two gene sets. bioRxiv. 10.1101/860460
+
 
 [DGSEA-gh]:   https://github.com/JamesJoly/DGSEA
 
