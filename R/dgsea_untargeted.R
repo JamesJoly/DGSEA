@@ -173,9 +173,12 @@ dgsea_untargeted <- function(input.df, gmt.list,
   num.gene.sets.under.5 <- which(num.hits.pathways.df < 5)
   if (length(num.gene.sets.under.5) > 1){
     print("Warning: Removing gene sets with less than 5 genes observed in data set.")
-    gene.sets.to.remove <- background.Gene.Sets.A.and.B_unique[num.gene.sets.under.5]
+    gene.sets.to.remove <- Gene.Sets.All[num.gene.sets.under.5]
     annotations <- annotations[,-which(colnames(annotations) %in% gene.sets.to.remove)]
   }
+
+  gene.sets.updated <- colnames(annotations)[-1]
+
   annotations <- as.data.frame(annotations)
   data_in <- merge(data_in, annotations, by = "Gene")
 
@@ -205,6 +208,8 @@ dgsea_untargeted <- function(input.df, gmt.list,
   Samples <- Samples[1]
 
   rm(annotations)
+  Gene.Sets.All <- gene.sets.updated
+
   data_in2 <- array(data = NA)
   for (u in 1:length(Samples)){
     loop.time <- Sys.time()
@@ -241,14 +246,14 @@ dgsea_untargeted <- function(input.df, gmt.list,
     for (i in 1:length(Gene.Sets.All)){
       data_in3 <- data_in2[,Gene.Sets.All[i]]
       numhits_pathway <- sum(data_in3 == "X"); #check to see if there is anything in the column (e.g. X)
-      if (numhits_pathway > 1){
+      #if (numhits_pathway > 1){
         pos_gene_set <- which(data_in2[,Gene.Sets.All[i]] %in% c("X"))
         KS_real <- GSEA.EnrichmentScore(gene.list, pos_gene_set, weighted.score.type = score.weight, correl.vector = rank_metric)
         GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.All[i],]$KS <- KS_real$ES;
         GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.All[i],]$Position_at_max <- KS_real$arg.ES;
         ks_results_plot[[Gene.Sets.All[i]]] = KS_real$RES
         positions.of.hits[[Gene.Sets.All[i]]] = pos_gene_set
-      }
+      #}
     }
 
     Mountain.Plot.Info <- list(MountainPlot = ks_results_plot, Position.of.hits = positions.of.hits)

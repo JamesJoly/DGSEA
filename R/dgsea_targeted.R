@@ -411,27 +411,27 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
 
     KSRandomArray.Norm$DGSEA <- norm.DGSEA.perms
 
-    DGSEA_RandomArray_A <- matrix(data = NA, nrow = nrow(KSRandomArray), ncol = length(background.Gene.Sets.A.and.B_unique))
+    DGSEA_RandomArray_A <- matrix(data = NA, nrow = nrow(KSRandomArray), ncol = length(gene.sets.updated))
     DGSEA_RandomArray_A <- as.data.frame(DGSEA_RandomArray_A)
-    DGSEA_RandomArray_B <- matrix(data = NA, nrow = nrow(KSRandomArray), ncol = length(background.Gene.Sets.A.and.B_unique))
+    DGSEA_RandomArray_B <- matrix(data = NA, nrow = nrow(KSRandomArray), ncol = length(gene.sets.updated))
     DGSEA_RandomArray_B <- as.data.frame(DGSEA_RandomArray_B)
 
-    DGSEA_Real_A <- as.data.frame(matrix(data = NA, nrow = 1, ncol = length(background.Gene.Sets.A.and.B_unique)))
+    DGSEA_Real_A <- as.data.frame(matrix(data = NA, nrow = 1, ncol = length(gene.sets.updated)))
 
-    DGSEA_Real_B <- as.data.frame(matrix(data = NA, nrow = 1, ncol = length(background.Gene.Sets.A.and.B_unique)))
+    DGSEA_Real_B <- as.data.frame(matrix(data = NA, nrow = 1, ncol = length(gene.sets.updated)))
 
-    for(i in 1:length(background.Gene.Sets.A.and.B_unique)){
-      identifier <- paste("DGSEA A", background.Gene.Sets.A.and.B_unique[i])
+    for(i in 1:length(gene.sets.updated)){
+      identifier <- paste("DGSEA A", gene.sets.updated[i])
       colnames(DGSEA_RandomArray_A)[i] <- identifier
-      DGSEA_RandomArray_A[,i] <- KSRandomArray[,Gene.Sets.A.and.B[1]] - KSRandomArray[,background.Gene.Sets.A.and.B_unique[i]]
+      DGSEA_RandomArray_A[,i] <- KSRandomArray[,Gene.Sets.A.and.B[1]] - KSRandomArray[,gene.sets.updated[i]]
       colnames(DGSEA_Real_A)[i] <- identifier
-      DGSEA_Real_A[,i] <- GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.A.and.B[1],]$KS -GSEA.Results[GSEA.Results$Gene.Set == background.Gene.Sets.A.and.B_unique[i],]$KS
+      DGSEA_Real_A[,i] <- GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.A.and.B[1],]$KS -GSEA.Results[GSEA.Results$Gene.Set == gene.sets.updated[i],]$KS
 
-      identifier <- paste("DGSEA B", background.Gene.Sets.A.and.B_unique[i])
+      identifier <- paste("DGSEA B", gene.sets.updated[i])
       colnames(DGSEA_RandomArray_B)[i] <- identifier
-      DGSEA_RandomArray_B[,i] <- KSRandomArray[,Gene.Sets.A.and.B[2]] - KSRandomArray[,background.Gene.Sets.A.and.B_unique[i]]
+      DGSEA_RandomArray_B[,i] <- KSRandomArray[,Gene.Sets.A.and.B[2]] - KSRandomArray[,gene.sets.updated[i]]
       colnames(DGSEA_Real_B)[i] <- identifier
-      DGSEA_Real_B[,i] <-  GSEA.Results[GSEA.Results$Gene.Set == background.Gene.Sets.A.and.B_unique[i],]$KS - GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.A.and.B[2],]$KS
+      DGSEA_Real_B[,i] <-  GSEA.Results[GSEA.Results$Gene.Set == gene.sets.updated[i],]$KS - GSEA.Results[GSEA.Results$Gene.Set == Gene.Sets.A.and.B[2],]$KS
     }
 
     DGSEA_Real <- cbind(DGSEA_Real_A,DGSEA_Real_B)
