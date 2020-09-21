@@ -46,18 +46,15 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
 
   data_in <- input.df
 
-
   gmt.for.reformat <- gmt.list
   Gene.Sets <- t(plyr::ldply(gmt.for.reformat$genesets, rbind)) #reformat gmt list to desired format
   colnames(Gene.Sets) <- gmt.for.reformat$geneset.names
 
   testthat::expect_is(data_in, "data.frame")
-  testthat::expect_is(DGSEA.Gene.Sets, "data.frame")
-  testthat::expect_is(background.Gene.Sets.A.and.B, "data.frame")
 
   colnames(data_in)[1] <- "Gene"
   expected.number.of.genes <- length(data_in$Gene)
-  actual.number.of.genes <- unique(data_in$Gene)
+  actual.number.of.genes <- length(unique(data_in$Gene))
   if (actual.number.of.genes < expected.number.of.genes){
     stop("Your gene list has duplicates, please collapse your data or process in a different way to use DGSEA.")
   }
@@ -70,11 +67,13 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
 
   DGSEA.Gene.Sets <- as.data.frame(cbind(Gene.Set.A.subset,Gene.Set.B.subset))
   colnames(DGSEA.Gene.Sets) <- c(Gene.Set.A.Name,Gene.Set.B.Name)
+  testthat::expect_is(DGSEA.Gene.Sets, "data.frame")
 
 
   background.Gene.Sets.A.and.B <- as.data.frame(Gene.Sets.All)
   background.Gene.Sets.A.and.B[,Gene.Set.A.Name] <- NULL #remove gene sets A and B from background to not get 0s later on
   background.Gene.Sets.A.and.B[,Gene.Set.B.Name] <- NULL
+  testthat::expect_is(background.Gene.Sets.A.and.B, "data.frame")
 
 
 

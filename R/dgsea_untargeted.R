@@ -43,7 +43,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
   data_in <- input.df
   colnames(data_in)[1] <- "Gene"
   expected.number.of.genes <- length(data_in)
-  actual.number.of.genes <- unique(data_in[,1])
+  actual.number.of.genes <- length(unique(data_in[,"Gene"]))
 
   if (actual.number.of.genes < expected.number.of.genes){
     stop("Your gene list has duplicates, please collapse your data or process in a different way to use DGSEA.")
