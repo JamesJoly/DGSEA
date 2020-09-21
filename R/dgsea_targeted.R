@@ -213,7 +213,7 @@ dgsea_targeted <- function(input.df, gmt.list, Gene.Set.A.Name, Gene.Set.B.Name,
   if (length(num.gene.sets.under.5) > 1){
     print("Warning: Removing gene sets with less than 5 genes observed in data set.")
     gene.sets.to.remove <- background.Gene.Sets.A.and.B_unique[num.gene.sets.under.5]
-    annotations[,which(colnames(annotations) %in% gene.sets.to.remove)] <- NULL
+    annotations <- annotations[,-which(colnames(annotations) %in% gene.sets.to.remove)]
   }
 
   gene.sets.updated <- colnames(annotations)[-1]

@@ -42,7 +42,7 @@ dgsea_untargeted <- function(input.df, gmt.list,
   #Samples should be columns 2:N
   data_in <- input.df
   colnames(data_in)[1] <- "Gene"
-  expected.number.of.genes <- length(data_in)
+  expected.number.of.genes <- nrow(data_in)
   actual.number.of.genes <- length(unique(data_in[,"Gene"]))
 
   if (actual.number.of.genes < expected.number.of.genes){
@@ -173,8 +173,8 @@ dgsea_untargeted <- function(input.df, gmt.list,
   num.gene.sets.under.5 <- which(num.hits.pathways.df < 5)
   if (length(num.gene.sets.under.5) > 1){
     print("Warning: Removing gene sets with less than 5 genes observed in data set.")
-    gene.sets.to.remove <- Gene.Sets.All[num.gene.sets.under.5]
-    annotations[,which(colnames(annotations) %in% gene.sets.to.remove)] <- NULL
+    gene.sets.to.remove <- background.Gene.Sets.A.and.B_unique[num.gene.sets.under.5]
+    annotations <- annotations[,-which(colnames(annotations) %in% gene.sets.to.remove)]
   }
   annotations <- as.data.frame(annotations)
   data_in <- merge(data_in, annotations, by = "Gene")
