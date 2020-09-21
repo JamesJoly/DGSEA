@@ -101,8 +101,8 @@ make_mountain_plots <- function(DGSEA.list, Gene.Set.A, Gene.Set.B, color = TRUE
     cowplot::theme_nothing() +
     ggplot2::theme(panel.border = ggplot2::element_rect(color = "black", fill = NA)
     ) +
-    ggplot2::geom_col(ggplot2::aes(x = pos.GeneSetA, y = 1), color = color.palette[1]) +
-    ggplot2::geom_col(ggplot2::aes(x = pos.GeneSetB, y = 1), color = color.palette[2]) +
+    ggplot2::geom_col(ggplot2::aes(x = pos.GeneSetA, y = 1), color = color.palette[1], fill = color.palette[1]) +
+    ggplot2::geom_col(ggplot2::aes(x = pos.GeneSetB, y = 1), color = color.palette[2], fill = color.palette[2]) +
     ggplot2::labs(x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(expand = c(0,0)) +
     aplot::xlim2(mtn.plot)
